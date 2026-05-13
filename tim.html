@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proper Waste Management</title>
+<style>
+  /* Global Styles */
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background: #0b3d0b;
+    color: white;
+  }
+
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    position: relative;
+    transition: background 0.5s;
+  }
+
+  h1, h2 { margin-bottom: 20px; }
+  p { max-width: 700px; text-align: center; font-size: 1.2rem; line-height: 1.6; }
+
+  /* Section Background Gradients */
+  #hero { background: linear-gradient(135deg, #0b3d0b, #135214); }
+  #throw-trash { background: linear-gradient(135deg, #135214, #1a5f2d); }
+  #recycling { background: linear-gradient(135deg, #1a5f2d, #42a5f5); }
+  #compost { background: linear-gradient(135deg, #42a5f5, #ffca28); }
+  #hazard { background: linear-gradient(135deg, #ff7043, #d50000); }
+
+  /* Animated Trash Bin */
+  .bin-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-top: 40px;
+  }
+
+  .bin {
+    width: 80px;
+    height: 100px;
+    background: #555;
+    border-top: 20px solid #333;
+    border-radius: 5px;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .trash {
+    width: 20px;
+    height: 20px;
+    background: #ffeb3b;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 120px;
+    border-radius: 3px;
+  }
+
+  /* Throwing Animation for multiple trash pieces */
+  @keyframes throwTrash {
+    0% { bottom: 120px; left: 50%; opacity:1; transform: translateX(-50%) rotate(0deg);}
+    50% { bottom: 70px; left: 60%; transform: translateX(-50%) rotate(45deg);}
+    100% { bottom: 0px; left: 50%; opacity:0; transform: translateX(-50%) rotate(90deg);}
+  }
+
+  .trash.animate {
+    animation: throwTrash 2s infinite;
+  }
+
+  /* Floating Visuals */
+  .floating-icon {
+    font-size: 3rem;
+    margin: 20px;
+    animation: float 3s ease-in-out infinite alternate;
+  }
+  @keyframes float {
+    0% { transform: translateY(0);}
+    100% { transform: translateY(-20px);}
+  }
+
+  /* Section Fade-In Scroll Animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* Multiple People throwing trash */
+  .person {
+    width: 40px;
+    height: 60px;
+    background: #ff9800;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    animation: moveLeftRight 3s ease-in-out infinite alternate;
+  }
+  @keyframes moveLeftRight {
+    0% { left: 40%; }
+    100% { left: 60%; }
+  }
+
+  /* Responsive */
+  @media(max-width:768px){
+    .bin-container { width: 100px; height: 120px;}
+    .bin { width: 60px; height: 80px; border-top: 15px solid #333; }
+    .trash { width: 15px; height: 15px; bottom: 100px; }
+    .person { width: 25px; height: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section id="hero">
+  <h1 class="fade-in">Proper Waste Management</h1>
+  <p class="fade-in">Scroll down to explore ways to manage waste responsibly, with interactive visuals demonstrating each method.</p>
+</section>
+
+<!-- Throw Trash Section -->
+<section id="throw-trash">
+  <h2 class="fade-in">Always Put Trash in Dustbins</h2>
+  <p class="fade-in">Throwing waste into proper bins keeps the environment clean. Watch the visual example below:</p>
+  <div class="bin-container fade-in">
+    <div class="bin"></div>
+    <!-- multiple trash pieces -->
+    <div class="trash animate"></div>
+    <div class="trash animate" style="animation-delay: 0.5s;"></div>
+    <div class="trash animate" style="animation-delay: 1s;"></div>
+    <div class="person"></div>
+  </div>
+</section>
+
+<!-- Recycling Section -->
+<section id="recycling">
+  <h2 class="fade-in">Recycle Whenever Possible ♻️</h2>
+  <p class="fade-in">Separate recyclable items like paper, plastic, and metals. Recycling saves resources and reduces landfill waste.</p>
+  <div class="grid fade-in" style="display:flex; flex-wrap:wrap; justify-content:center;">
+    <div class="floating-icon">📦</div>
+    <div class="floating-icon">🥤</div>
+    <div class="floating-icon">📰</div>
+  </div>
+</section>
+
+<!-- Compost Section -->
+<section id="compost">
+  <h2 class="fade-in">Compost Organic Waste 🌱</h2>
+  <p class="fade-in">Food scraps and garden waste can be turned into compost to enrich soil naturally.</p>
+  <div class="grid fade-in" style="display:flex; flex-wrap:wrap; justify-content:center;">
+    <div class="floating-icon">🍌</div>
+    <div class="floating-icon">🥬</div>
+    <div class="floating-icon">🍂</div>
+  </div>
+</section>
+
+<!-- Hazardous Waste Section -->
+<section id="hazard">
+  <h2 class="fade-in">Dispose Hazardous Waste Carefully ⚠️</h2>
+  <p class="fade-in">Batteries, chemicals, and medical waste should be taken to certified disposal centers.</p>
+  <div class="grid fade-in" style="display:flex; flex-wrap:wrap; justify-content:center;">
+    <div class="floating-icon">💊</div>
+    <div class="floating-icon">🧴</div>
+    <div class="floating-icon">☣️</div>
+  </div>
+</section>
+
+<script>
+  // Scroll-triggered fade-in
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+  const appearOnScroll = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+  faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+  // Optional: multiple people can be added dynamically in JS
+</script>
+
+</body>
+</html>
